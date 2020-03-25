@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.org/ebaymademepoor/myTeamV2-2020.svg?branch=master)](https://travis-ci.org/ebaymademepoor/myTeamV2-2020)
