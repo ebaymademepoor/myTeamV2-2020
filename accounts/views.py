@@ -137,11 +137,11 @@ def contact_us(request):
         
     return render(request, 'contact_us.html')
 
-# @user_passes_test(lambda u: u.is_superuser)    
-# def jasmine(request):
+@user_passes_test(lambda u: u.is_superuser)    
+def jasmine(request):
     
-#     """
-#     Runs js testing suite (superuser access only)
-#     """
+    """
+    Runs js testing suite (superuser access only)
+    """
         
-#     return render(request, 'jasmine.html')
+    return render(request, 'jasmine.html')
