@@ -8,3 +8,4 @@ myTeam/Lib
 myTeam/Scripts
 myTeam/__pycache__/
 myTeam/pyvenv.cfg
+.env
