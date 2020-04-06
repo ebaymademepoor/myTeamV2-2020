@@ -30,9 +30,10 @@ env.read_env(env_file)
 SECRET_KEY = env.str('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if env_file:
+    DEBUG = True
 
-ALLOWED_HOSTS = ["127.0.0.1", "my-team-utility-2020.herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1", env.str('HOSTNAME')]
 
 # Application definition
 
@@ -88,12 +89,16 @@ WSGI_APPLICATION = 'myTeam.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if DEBUG:
+    print("POSTGRES URL was not found, using sqlite instead")
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}
+else:
+    DATABASES = {"default" : dj_database_url.parse(os.environ.get('DATABASE_URL'))}
 
 
 # Password validation
